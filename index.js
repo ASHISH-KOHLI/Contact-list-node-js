@@ -8,6 +8,25 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 // app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.urlencoded({extended:false}))
+
+app.use( express.static('assets'))
+
+
+
+
+// middelware 1
+// app.use((req, res, next) => {
+//     console.log('middleware 1 called')
+//     next()
+//   })
+
+
+// //   middelware 2
+// app.use((req, res, next) => {
+//     console.log('middleware 1 called')
+//     next()
+//   })
+
 var contactList =[
     {
         name:'ashish', 

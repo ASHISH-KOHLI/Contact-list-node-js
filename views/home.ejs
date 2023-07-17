@@ -6,9 +6,11 @@
     <title>
         <%= title%>
     </title>
+   <link rel="stylesheet" href="/css/home.css">
+
 </head>
 <body>
-    <h1>Contact List</h1>
+    <h1 id="page-heading">Contact List</h1>
     <div>
         <ul>
             <% for(let i of contact_list) { %>
@@ -25,6 +27,6 @@
         <input type="number" name="phone" placeholder="enter phone" required>
         <button type="submit">Add Contact</button>
     </form>
-
+<script type="text/javascript"src="/assets/js/home.js"></script>
 </body>
 </html>
