@@ -4,6 +4,7 @@ const app = express()
 const bodyParser = require('body-parser');
 const port= 8000
 const db = require('./config/mongoose');
+const Contact = require('./models/contact');
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
@@ -45,10 +46,23 @@ var contactList =[
 
 
 app.get('/',(req,res) => { 
-   return res.render('home',{
-    title:" Contact List",
-    contact_list: contactList
-})
+//    return res.render('home',{
+//     title:" Contact List",
+//     contact_list: contactList
+// })
+ 
+   Contact.find(req.body).then(contacts => {
+    console.log("Contacts fetched successfully")
+    res.render('home',{
+        title:'Contact list',
+        contact_list : contacts
+    })
+   })
+   .catch (err => {
+    console.log('error in fetching contact from database');
+    return;
+   })
+
 })
 
 
@@ -60,14 +74,23 @@ app.get('/practice',(req,res) => {
     })
  })
 
- app.post('/create-contact', (req, res) => {
-    // return res.redirect('/practice')
-   contactList.push({
-    name:req.body.name,
-    phone:req.body.phone
-   })
 
-   return res.redirect('/')
+
+ app.post('/create-contact', (req, res) => {
+// return res.redirect('/practice')
+//    contactList.push({
+//     name:req.body.name,
+//     phone:req.body.phone
+//    })
+    Contact.create(req.body).then(newContact => {
+        console.log('new contact created:', newContact)
+        res.redirect('/')
+    })
+     .catch(err =>{
+        console.log('Error in creating contact:', err);
+        res.status(500).send('Error in creating contact');
+     })
+
   })
 
 //   for deleting a contact
@@ -76,11 +99,21 @@ app.get('/practice',(req,res) => {
     let id = req.query.id
 
     // find the contact in  the database using id and delete
-     let contactIndex = contactList.findIndex(contact => contact.phone);
-     if(contactIndex !=1){
-        contactList.splice(contactIndex,1);
-     }
-     return res.redirect('/')
+    //  let contactIndex = contactList.findIndex(contact => contact.phone);
+    //  if(contactIndex !=1){
+    //     contactList.splice(contactIndex,1);
+    //  }
+
+
+    Contact.findByIdAndDelete(id)
+    .then(id => {
+        res.redirect('/')
+
+    })
+    .catch(err => {
+        consol.log('error in deleting an object from database')
+        return;
+    })
     
   })
 
