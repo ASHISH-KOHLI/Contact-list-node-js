@@ -15,11 +15,7 @@
     <h1 id="page-heading"> <i class="fas fa-address-book"></i>Contact List</h1>
     
     
-    <form id="new-contact-form" action="/create-contact" method="POST">
-        <input type="text" name="name" placeholder="Enter name" required>
-        <input type="number" name="phone" placeholder="enter phone" required>
-        <button type="submit">Add </button>
-    </form>
+    
     
     
     
@@ -41,7 +37,11 @@
                 <% } %>
         </ul>
     </div>
-
+    <form id="new-contact-form" action="/create-contact" method="POST">
+        <input type="text" name="name" placeholder="Enter name" required>
+        <input type="number" name="phone" placeholder="enter phone" required>
+        <button type="submit">Add </button>
+    </form>
    
 <script type="text/javascript"src="/assets/js/home.js"></script>
 </body>

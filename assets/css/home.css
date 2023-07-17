@@ -1,17 +1,27 @@
 body{
     margin: 0;
+    padding: 0;
     font-family: sans-serif;
+    background-size: cover;
+    background-image: linear-gradient(-225deg, #f60a84 0%, #af04f8 48%,#f60a84  100%);
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 #page-heading{
     
-    margin-top: 25px;
-    color: aqua;
+    text-align: center; 
+    color: white;
 }
 
 form{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 }
 
 #contact-list-container ul{
@@ -21,9 +31,9 @@ form{
 
 .contact{
     padding:3px 10px;
-    border: 1px solid white;
-    background-color: #6f92f9;
-    box-shadow: 1px 1px 1px 1px lightcoral;
+    border: 1px solid rgb(110, 12, 247);
+    background-color: #f083e3;
+    box-shadow: 1px 1px 1px 1px rgb(240, 128, 216);
     color: white;
     display: flex;
 }
