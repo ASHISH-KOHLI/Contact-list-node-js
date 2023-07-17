@@ -3,6 +3,7 @@ const path = require('path')
 const app = express()
 const bodyParser = require('body-parser');
 const port= 8000
+const db = require('./config/mongoose');
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
