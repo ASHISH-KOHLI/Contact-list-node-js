@@ -69,7 +69,19 @@ app.get('/practice',(req,res) => {
    return res.redirect('/')
   })
 
+//   for deleting a contact
+  app.get('/delete-contact/', (req, res) => {
+    // get the id from the query in url id=phone
+    let id = req.query.id
 
+    // find the contact in  the database using id and delete
+     let contactIndex = contactList.findIndex(contact => contact.phone);
+     if(contactIndex !=1){
+        contactList.splice(contactIndex,1);
+     }
+     return res.redirect('/')
+    
+  })
 
 
 
