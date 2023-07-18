@@ -50,8 +50,28 @@ form{
 .contact .delete-button{
   width :10%;
   text-align: center;
+  
 }
+
+ .delete-button:hover{
+color: red;
+}
+
 
 .contact p{
     margin: 5px 0;
+}
+
+#new-contact-form{
+   display: flex; 
+   flex-direction: row;
+}
+
+#new-contact-form button{
+    background-color: rgb(3, 222, 251);
+}
+
+#new-contact-form input{
+  border-radius: 2px;
+
 }
